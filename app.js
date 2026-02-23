@@ -12,9 +12,15 @@ const statusDisplay = document.querySelector(".game--status");
 let gameActive = true; // This keeps track of whether the game is active or has ended
 let currentPlayer = "X"; // This tracks whose turn it currently is
 let gameState = ["", "", "", "", "", "", "", "", ""]; // Represents the 9 cells in the game board
+let playerXScore = 0; // Score for Player X
+let playerOScore = 0; // Score for Player O
 
 // A function to return the current player's turn message
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
+
+// A function to keep track of score for the players
+const XScoreboard = document.querySelector('#playerXScore');
+const OScoreboard = document.querySelector('#playerOScore');
 
 // Display the initial status message in the DOM
 statusDisplay.innerHTML = currentPlayerTurn();
@@ -97,6 +103,15 @@ function handleResultValidation() {
     if (roundWon) {
         statusDisplay.innerHTML = 'Player ' + currentPlayer + ' has won!';
         gameActive = false;
+        //Update the score for the winning player
+        if (currentPlayer === "X") {
+            playerXScore++;
+            XScoreboard.innerHTML = playerXScore;
+        }
+        else {
+            playerOScore++;
+            OScoreboard.innerHTML = playerOScore;
+        }
         return;
     }
   // If there are no empty cells in 'gameState', it's a draw
