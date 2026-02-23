@@ -8,6 +8,12 @@ body {
     text-align: center;
   }
   
+  .scoreboard {
+    font-family: "Permanent Marker", cursive;
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
   .game--container {
     display: grid;
     grid-template-columns: repeat(3, auto);
